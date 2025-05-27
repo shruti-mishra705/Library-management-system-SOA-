@@ -1,0 +1,38 @@
+version: "3.8"
+
+services:
+  book:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.book
+    ports:
+      - "5001:5001"
+
+  borrower:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.borrower
+    ports:
+      - "5002:5002"
+    depends_on:
+      - book
+
+  fine:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.fine
+    ports:
+      - "5003:5003"
+    depends_on:
+      - borrower
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - book
+      - borrower
+      - fine

@@ -1,0 +1,175 @@
+openapi: 3.0.3
+info:
+  title: Library SOA Borrower Service API
+  version: 1.0.0
+  description: API documentation for Borrower Service
+
+servers:
+  - url: http://localhost:5002
+
+paths:
+  /:
+    get:
+      summary: Health check
+      responses:
+        "200":
+          description: Service is running
+
+  /users:
+    post:
+      summary: Register a new user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - id
+                - name
+              properties:
+                id:
+                  type: integer
+                name:
+                  type: string
+      responses:
+        "201":
+          description: User registered
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+
+  /issue:
+    post:
+      summary: Issue a book to a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - book_id
+                - user_id
+              properties:
+                book_id:
+                  type: integer
+                user_id:
+                  type: integer
+                issue_date:
+                  type: string
+                  example: "2025-05-01"
+      responses:
+        "200":
+          description: Book issued successfully
+
+  /return:
+    post:
+      summary: Return a book
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - book_id
+                - user_id
+              properties:
+                book_id:
+                  type: integer
+                user_id:
+                  type: integer
+                return_date:
+                  type: string
+                  example: "2025-05-15"
+      responses:
+        "200":
+          description: Book returned with fine calculated
+
+  /records/{user_id}:
+    get:
+      summary: Fetch all books issued by a user
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the user
+      responses:
+        "200":
+          description: List of issued books for the user
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    book_id:
+                      type: integer
+                    user_id:
+                      type: integer
+                    issue_date:
+                      type: string
+        "404":
+          description: No issued books found for the user
+
+  /fine/{user_id}:
+    post:
+      summary: Calculate total fine for a user given a return date
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - return_date
+              properties:
+                return_date:
+                  type: string
+                  example: "2025-05-15"
+      responses:
+        "200":
+          description: Fine calculated for user
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_id:
+                    type: integer
+                  total_fine:
+                    type: number
+                  details:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        book_id:
+                          type: integer
+                        issue_date:
+                          type: string
+                        return_date:
+                          type: string
+                        fine:
+                          type: number
+        "400":
+          description: Missing return_date in request
+        "404":
+          description: No issued books found for the user

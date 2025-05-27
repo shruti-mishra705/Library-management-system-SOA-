@@ -1,0 +1,72 @@
+openapi: 3.0.0
+info:
+  title: Library SOA API
+  version: 1.0.0
+paths:
+  /users:
+    post:
+      summary: Register a user
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  example: 1
+                name:
+                  type: string
+                  example: "Alice"
+                borrowed_books:
+                  type: array
+                  items:
+                    type: integer
+                  example: [101, 102]
+      responses:
+        "201":
+          description: User registered
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  borrowed_books:
+                    type: array
+                    items:
+                      type: integer
+
+  /calculate:
+    post:
+      summary: Calculate fine
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                issue_date:
+                  type: string
+                  format: date
+                  example: "2025-05-01"
+                return_date:
+                  type: string
+                  format: date
+                  example: "2025-05-20"
+      responses:
+        "200":
+          description: Fine amount
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fine:
+                    type: number
+                    example: 12

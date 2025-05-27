@@ -1,0 +1,154 @@
+.App {
+  min-height: 100vh;
+}
+
+.sidebar {
+  background-color: #f8f9fa;
+  padding: 20px;
+  min-height: 100vh;
+  border-right: 1px solid #dee2e6;
+}
+
+.main-content {
+  padding: 20px;
+}
+
+.content-area {
+  background-color: white;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-item {
+  margin-bottom: 10px;
+}
+
+.nav-link {
+  padding: 12px 20px;
+  border-radius: 5px;
+  color: #495057;
+  text-decoration: none;
+  display: block;
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #e9ecef;
+  color: #495057;
+  text-decoration: none;
+}
+
+.nav-link.active {
+  background-color: #007bff;
+  color: white;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.btn {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.table th {
+  background-color: #f8f9fa;
+}
+
+.alert {
+  margin-top: 15px;
+}
+
+.book-item, .user-item {
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  padding: 15px;
+  margin-bottom: 10px;
+  background-color: #f8f9fa;
+}
+
+.book-item h6, .user-item h6 {
+  margin-bottom: 5px;
+  color: #495057;
+}
+
+.book-item .btn, .user-item .btn {
+  margin-right: 5px;
+  margin-top: 5px;
+}
+
+/* Home Page Custom Styles */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 70vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e3f0ff 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  padding: 40px 20px;
+  margin-bottom: 30px;
+}
+
+.home-logo {
+  max-width: 220px;
+  margin: 32px auto 20px auto;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  border: 2px solid #007bff22;
+  transition: transform 0.2s;
+}
+.home-logo:hover {
+  transform: scale(1.04) rotate(-2deg);
+}
+
+.home-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #007bff;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.home-lead {
+  font-size: 1.3rem;
+  color: #333;
+  margin-bottom: 18px;
+}
+
+.home-quicknav {
+  margin-top: 30px;
+  text-align: left;
+  max-width: 420px;
+}
+
+.home-quicknav h5 {
+  color: #007bff;
+  margin-bottom: 10px;
+}
+
+.home-quicknav ul {
+  padding-left: 18px;
+}
+
+.home-quicknav li {
+  margin-bottom: 8px;
+  font-size: 1.08rem;
+  color: #444;
+  position: relative;
+  padding-left: 10px;
+}
+
+.home-quicknav li::before {
+  content: "•";
+  color: #007bff;
+  position: absolute;
+  left: 0;
+}

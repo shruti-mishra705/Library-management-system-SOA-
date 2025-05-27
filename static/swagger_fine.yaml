@@ -1,0 +1,43 @@
+openapi: 3.0.0
+info:
+  title: Library SOA Fine Service API
+  version: 1.0.0
+
+paths:
+  /calculate/{user_id}:
+    get:
+      summary: Calculate fine for a user by fetching issue data from Borrower Service
+      parameters:
+        - name: user_id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: ID of the user whose fine is to be calculated
+      responses:
+        "200":
+          description: Fine calculated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user_id:
+                    type: integer
+                  total_fine:
+                    type: number
+                  details:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        book_id:
+                          type: integer
+                        issue_date:
+                          type: string
+                        return_date:
+                          type: string
+                        fine:
+                          type: number
+        "500":
+          description: Error contacting Borrower Service
