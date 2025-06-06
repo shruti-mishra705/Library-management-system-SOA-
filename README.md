@@ -113,6 +113,15 @@ Each backend service provides interactive API docs via Swagger UI:
 - Deploy backend as serverless functions or managed services
 
 ---
+![image](https://github.com/user-attachments/assets/620a8851-ef0c-40b5-bcc8-88e3885b588c)
+![image](https://github.com/user-attachments/assets/2ff058bf-6ffb-4c43-8e22-d593936ee829)
+![image](https://github.com/user-attachments/assets/1b97cf18-05c0-4893-98b1-ad5a74103717)
+![image](https://github.com/user-attachments/assets/cd323560-77d7-48ab-b8b5-ef87f01a95cd)
+![image](https://github.com/user-attachments/assets/37d0c51e-1879-42e9-84df-b91b50912170)
+
+
+
+
 
 
 
